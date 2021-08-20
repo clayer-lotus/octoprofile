@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Merriweather Sans", sans-serif;
 }
 .userContainer {
   background-color: rgba(236, 228, 228, 0.521);
@@ -31,7 +33,7 @@ h1 {
 }
 h3 {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
 }
 a {
   text-decoration: none;
