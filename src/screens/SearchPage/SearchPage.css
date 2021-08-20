@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@300&display=swap");
+svg {
+  display: inline-block;
+  fill: currentColor;
+  user-select: none;
+  vertical-align: text-bottom;
+  color: rgb(0, 112, 243);
+}
+
+.outer-container {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: rgb(26, 30, 34);
+  background-image: linear-gradient(rgb(26, 30, 34) 0%, rgb(36, 41, 46) 100%);
+  color: rgb(246, 248, 250);
+  height: 100vh;
+}
+form {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 2rem;
+  margin-bottom: 20vh;
+  max-width: 600px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 2rem;
+  font-family: "Spectral", serif;
+}
+
+form input {
+  background-color: rgb(38, 48, 60);
+  outline: 0px;
+  border: 0px;
+  border-radius: 0.25rem;
+  width: 90%;
+  margin: 0px auto;
+  padding: 1rem;
+  color: rgb(121, 184, 255);
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono",
+    "Lucida Console", Monaco, monospace;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+}
+@media screen and (max-width: 700px) {
+  label {
+    font-size: 1.3rem;
+  }
+}
