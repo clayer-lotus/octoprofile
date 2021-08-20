@@ -7,7 +7,7 @@ const SearchPage = ({ history }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    history.push("/user");
+    history.push("/user?id=" + username);
   };
   return (
     <div className="outer-container">
