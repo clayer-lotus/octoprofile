@@ -10,6 +10,7 @@ Built with:
 - [React.js](https://reactjs.org/)
 - [React Bootstrap](https://react-bootstrap.netlify.app/)
 - [GitHub REST API](https://docs.github.com/en/rest)
+- [Chart.js](https://www.chartjs.org/)
 
 ## Getting Started
 
