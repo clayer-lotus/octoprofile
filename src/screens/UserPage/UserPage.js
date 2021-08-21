@@ -3,7 +3,16 @@ import { useLocation } from "react-router";
 import "./UserPage.css";
 import StatsItem from "../../components/StatsItem/StatsItem";
 import ChartsCard from "../../components/ChartsCard/ChartsCard";
-import { Button, Badge, Row, Col, Card, Container } from "react-bootstrap";
+import Repos from "../../components/Repos/Repos";
+import {
+  Button,
+  Badge,
+  Row,
+  Col,
+  Card,
+  Container,
+  Form,
+} from "react-bootstrap";
 import "../../bootstrap.min.css";
 const UserPage = () => {
   //   const search = useLocation().search;
@@ -47,7 +56,31 @@ const UserPage = () => {
           </Row>
         </Container>
       </div>
-      <div className="top__repos"></div>
+      <div className="top__repos">
+        <Container>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label className="heading__topRepos">
+                <h3>
+                  <span className="underline-text"> Top Repos </span>
+                  <span className="light__test">by</span>
+                </h3>
+              </Form.Label>
+              <Form.Select defaultValue="Choose..." className="dropdown">
+                <option>forks</option>
+                <option>stars</option>
+                <option>size</option>
+              </Form.Select>
+            </Form.Group>
+          </Form>
+          <Row xs={1} md={2} className="">
+            <Repos />
+            <Repos />
+            <Repos />
+            <Repos />
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 };

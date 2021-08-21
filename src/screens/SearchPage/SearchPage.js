@@ -11,7 +11,7 @@ const SearchPage = ({ history }) => {
   };
   return (
     <div className="outer-container">
-      <form onSubmit={submitHandler}>
+      <form className="search__form__user" onSubmit={submitHandler}>
         <svg
           aria-hidden="true"
           className="octicon"

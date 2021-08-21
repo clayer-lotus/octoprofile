@@ -12,3 +12,8 @@
   background-size: 10px 2px;
   padding-bottom: 6px;
 }
+.light__test {
+  font-size: 1rem;
+  color: rgb(106, 115, 125);
+  padding: 1rem 1rem;
+}

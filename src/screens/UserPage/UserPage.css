@@ -82,3 +82,37 @@ i {
   margin-top: -3rem;
   padding-bottom: 5rem;
 }
+.top__repos {
+  padding: 0 0 10rem 0;
+}
+
+h3 {
+  font-weight: 900 !important;
+}
+
+.heading__topRepos {
+  margin: 0;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 1.75rem;
+}
+.underline-text {
+  background-image: linear-gradient(
+    90deg,
+    rgb(209, 213, 218) 50%,
+    rgba(255, 255, 255, 0) 0px
+  );
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  background-size: 10px 2px;
+  padding-bottom: 6px;
+}
+.dropdown {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(0, 112, 243);
+  background-color: transparent;
+  border: 1px solid rgba(0, 118, 255, 0.1);
+  padding: 10px 7px;
+  border-radius: 5px;
+}

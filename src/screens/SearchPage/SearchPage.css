@@ -18,7 +18,7 @@ svg {
   color: rgb(246, 248, 250);
   height: 100vh;
 }
-form {
+.search__form__user {
   background-color: transparent;
   border-radius: 5px;
   padding: 2rem;
