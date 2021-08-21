@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router";
 import "./UserPage.css";
 import StatsItem from "../../components/StatsItem/StatsItem";
+import ChartsCard from "../../components/ChartsCard/ChartsCard";
 const UserPage = () => {
   //   const search = useLocation().search;
   //   const name = new URLSearchParams(search).get("id");
@@ -9,10 +10,13 @@ const UserPage = () => {
   return (
     <div className="userContainer">
       <div className="upIntroSection">
-        <img src="https://avatars.githubusercontent.com/u/61588021?v=4" />
+        <img
+          src="https://avatars.githubusercontent.com/u/61588021?v=4"
+          alt=""
+        />
         <h1>Lotus Biswas</h1>
         <h3>
-          <a href="https://github.com/dev-lotus/" target="_blank">
+          <a href="https://github.com/dev-lotus/" target="blank">
             {" "}
             @dev-lotus
           </a>
@@ -31,6 +35,11 @@ const UserPage = () => {
           <StatsItem num={22} num__label={"FOLLOWERS"} />
           <StatsItem num={7} num__label={"FOLLOWING"} />
         </div>
+      </div>
+      <div className="chartSection">
+        <ChartsCard />
+        <ChartsCard />
+        <ChartsCard />
       </div>
     </div>
   );
