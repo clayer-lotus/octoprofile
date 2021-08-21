@@ -17,3 +17,14 @@
   color: rgb(106, 115, 125);
   padding: 1rem 1rem;
 }
+
+.chart__cards {
+  border-radius: 4px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+  top: -4px;
+  border: 1px solid #ccc;
+  background-color: white;
+}

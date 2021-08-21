@@ -5,7 +5,7 @@ import "../../bootstrap.min.css";
 const ChartsCard = (props) => {
   return (
     <Col className="mt-3">
-      <Card>
+      <Card className="chart__cards">
         <Card.Body>
           <Card.Title className="heading">
             <h3>{props.title}</h3>

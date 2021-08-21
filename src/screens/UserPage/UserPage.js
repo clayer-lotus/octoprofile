@@ -24,9 +24,10 @@ const UserPage = () => {
         <img
           src="https://avatars.githubusercontent.com/u/61588021?v=4"
           alt=""
+          className="github__image"
         />
         <h1>Lotus Biswas</h1>
-        <h3>
+        <h3 className="github__name">
           <a href="https://github.com/dev-lotus/" target="blank">
             {" "}
             @dev-lotus
