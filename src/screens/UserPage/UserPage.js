@@ -3,6 +3,8 @@ import { useLocation } from "react-router";
 import "./UserPage.css";
 import StatsItem from "../../components/StatsItem/StatsItem";
 import ChartsCard from "../../components/ChartsCard/ChartsCard";
+import { Button, Badge, Row, Col, Card, Container } from "react-bootstrap";
+import "../../bootstrap.min.css";
 const UserPage = () => {
   //   const search = useLocation().search;
   //   const name = new URLSearchParams(search).get("id");
@@ -37,10 +39,15 @@ const UserPage = () => {
         </div>
       </div>
       <div className="chartSection">
-        <ChartsCard />
-        <ChartsCard />
-        <ChartsCard />
+        <Container>
+          <Row xs={1} md={3} className="g-4 ">
+            <ChartsCard title={"Top Languages"} />
+            <ChartsCard title={"Most Starred"} />
+            <ChartsCard title={"Stars Per Language"} />
+          </Row>
+        </Container>
       </div>
+      <div className="top__repos"></div>
     </div>
   );
 };

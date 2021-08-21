@@ -1,19 +1,4 @@
-.chart {
-  background-color: rgb(255, 255, 255);
-  max-width: 500px;
-  padding: 2rem;
-  border-radius: 0.25rem;
-  box-shadow: rgb(0 0 0 / 20%) 0px 5px 30px -15px;
-}
-
-.chart header {
-  display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-header h2 {
+.heading {
   display: inline-block;
   margin: 0px;
   font-size: 1.75rem;
@@ -26,8 +11,4 @@ header h2 {
   background-repeat: repeat-x;
   background-size: 10px 2px;
   padding-bottom: 6px;
-}
-.chart img {
-  width: 300px;
-  height: 300px;
 }
