@@ -5,11 +5,12 @@ import "../../bootstrap.min.css";
 const Repos = () => {
   return (
     <Col className="mt-3">
-      <Card>
+      <Card className="top__cards">
         <Card.Body>
-          <Card.Title className="repo__name">
+          <Card.Title className="repo">
             <span>
-              <i class="fas fa-book"></i> dev-lotus
+              <i class="fas fa-book"></i>{" "}
+              <span className="repo__name">dev-lotus</span>
             </span>
           </Card.Title>
           <Card.Text>
@@ -22,20 +23,43 @@ const Repos = () => {
                 flex: 1,
               }}
             >
-              <span>
-                <i class="fas fa-star" aria-hidden="true"></i> 1
+              <span
+                style={{
+                  paddingRight: "5px",
+                }}
+              >
+                <i
+                  class="fas fa-circle"
+                  aria-hidden="true"
+                  style={{ color: "green" }}
+                ></i>{" "}
+                React JS
               </span>
               <span>
-                <i class="fas fa-code-fork" aria-hidden="true"></i> 0
+                <i
+                  class="fas fa-star"
+                  aria-hidden="true"
+                  style={{ color: "gold" }}
+                ></i>{" "}
+                1
+              </span>
+              <span>
+                <i
+                  class="fas fa-code-fork"
+                  aria-hidden="true"
+                  style={{ color: "blue" }}
+                ></i>{" "}
+                0
               </span>
             </div>
-            <div>
-              <span>
-                <i class="fas fa-star" aria-hidden="true"></i> 1
-              </span>
+            <div style={{ paddingTop: "4px" }}>
+              <span>150 KB</span>
             </div>
           </Card.Text>
         </Card.Body>
+        <div class="go-corner" href="#">
+          <div class="go-arrow">→</div>
+        </div>
       </Card>
     </Col>
   );
