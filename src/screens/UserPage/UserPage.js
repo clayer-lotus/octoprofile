@@ -2,18 +2,13 @@ import React from "react";
 import { useLocation } from "react-router";
 import "./UserPage.css";
 import StatsItem from "../../components/StatsItem/StatsItem";
-import ChartsCard from "../../components/ChartsCard/ChartsCard";
 import Repos from "../../components/Repos/Repos";
-import {
-  Button,
-  Badge,
-  Row,
-  Col,
-  Card,
-  Container,
-  Form,
-} from "react-bootstrap";
+import { Row, Container, Form } from "react-bootstrap";
 import "../../bootstrap.min.css";
+import StarsPerLanguage from "../../components/StarsPerLanguage/StarsPerLanguage";
+import MostStarred from "../../components/MostStarred/MostStarred";
+import TopLanguage from "../../components/TopLanguage/TopLanguage";
+
 const UserPage = () => {
   //   const search = useLocation().search;
   //   const name = new URLSearchParams(search).get("id");
@@ -51,9 +46,9 @@ const UserPage = () => {
       <div className="chartSection">
         <Container>
           <Row xs={1} md={3} className="g-4 ">
-            <ChartsCard title={"Top Languages"} type={"Pie"} />
-            <ChartsCard title={"Most Starred"} type={"Bar"} />
-            <ChartsCard title={"Stars Per Language"} type={"Doughnut"} />
+            <TopLanguage title={"Top Languages"} />
+            <MostStarred title={"Most Starred"} />
+            <StarsPerLanguage title={"Stars Per Language"} />
           </Row>
         </Container>
       </div>
