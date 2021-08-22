@@ -20,36 +20,100 @@ const UserPage = () => {
   const [loading, setLoading] = useState("");
   const [error, setError] = useState("");
   const [profileLink, setProfileLink] = useState("");
-  // const [state, setstate] = useState(initialState)
-  // const [state, setstate] = useState(initialState)
-  // const [state, setstate] = useState(initialState)
-  // const [state, setstate] = useState(initialState)
-  // const [state, setstate] = useState(initialState)
+  const [userLocation, setUserLocation] = useState("");
+  const [userPublicRepos, setUserPublicRepos] = useState("");
+  const [userFollowers, setUserFollowers] = useState("");
+  const [userFollowing, setUserFollowing] = useState("");
+  const [topLanguage, setTopLanguage] = useState("");
+
+  const fetchData = () => {
+    const githubProfileData = axios.get(
+      "https://api.github.com/users/" + searchName
+    );
+    const githubRepos = axios.get(
+      "https://api.github.com/users/" + searchName + "/repos"
+    );
+
+    var topLanguageName = [];
+    var topLanguageSameCount = [];
+
+    function count_duplicate(a) {
+      let counts = {};
+
+      for (let i = 0; i < a.length; i++) {
+        if (counts[a[i]]) {
+          counts[a[i]] += 1;
+        } else {
+          counts[a[i]] = 1;
+        }
+      }
+      for (let prop in counts) {
+        if (counts[prop]) {
+          topLanguageName.push(prop);
+          topLanguageSameCount.push(counts[prop]);
+        }
+      }
+    }
+
+    axios.all([githubProfileData, githubRepos]).then(
+      axios.spread((...allData) => {
+        const allgithubProfileData = allData[0].data;
+        const allgithubRepos = allData[1].data;
+
+        setuserName(allgithubProfileData.name);
+        setuserImage(allgithubProfileData.avatar_url);
+        setgithubName(allgithubProfileData.login);
+        setProfileLink(allgithubProfileData.html_url);
+        setUserLocation(allgithubProfileData.location);
+        setUserPublicRepos(allgithubProfileData.public_repos);
+        setUserFollowers(allgithubProfileData.followers);
+        setUserFollowing(allgithubProfileData.following);
+
+        var listofTopLanguage = [];
+        for (var i = 0; i < allgithubRepos.length; i++) {
+          if (allgithubRepos[i].fork == false) {
+            if (allgithubRepos[i].language == null) {
+              listofTopLanguage.push("Others");
+            } else {
+              listofTopLanguage.push(allgithubRepos[i].language);
+            }
+          }
+        }
+
+        count_duplicate(listofTopLanguage);
+
+        console.log(listofTopLanguage);
+
+        console.log(topLanguageName);
+        console.log(topLanguageSameCount);
+
+        // console.log(topLanguage);
+        console.log(allgithubProfileData);
+        console.log(allgithubRepos);
+      })
+    );
+  };
 
   useEffect(() => {
-    axios("https://api.github.com/users/" + searchName)
-      .then((response) => {
-        setuserName(response.data.name);
-        setuserImage(response.data.avatar_url);
-        setgithubName(response.data.login);
-        setProfileLink(response.data.html_url);
-      })
-      .catch((error) => {
-        console.error("Error in Fetching Data ", error);
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    //     // setTopLanguage(response.data.map(d=>d.))
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error in Fetching Data ", error);
+    //     setError(error);
+    //   })
+    //   .finally(() => {
+    //     setLoading(false);
+    //   });
+    fetchData();
   }, []);
-  if (loading) return "Loading ...";
-  if (error) return "Error ...";
+  // if (loading) return "Loading ...";
+  // if (error) return "Error ...";
 
   return (
     <div className="userContainer">
       <div className="upIntroSection">
         <a href={profileLink} target="blank">
-          <img src={userImage} className="github__image" />
+          <img src={userImage} alt={userName} className="github__image" />
         </a>
         <h1>{userName}</h1>
         <h3 className="github__name">
@@ -60,7 +124,8 @@ const UserPage = () => {
         </h3>
         <ul>
           <li>
-            <i class="fa fa-map-marker"></i>Dehradun
+            <i class="fa fa-map-marker"></i>
+            {userLocation}
           </li>
           <li>
             <i class="fa fa-calendar"></i>Joined February 28, 2020
@@ -68,9 +133,9 @@ const UserPage = () => {
         </ul>
         {/* STATS SECTION */}
         <div className="stats">
-          <StatsItem num={11} num__label={"Repositories"} />
-          <StatsItem num={22} num__label={"FOLLOWERS"} />
-          <StatsItem num={7} num__label={"FOLLOWING"} />
+          <StatsItem num={userPublicRepos} num__label={"Repositories"} />
+          <StatsItem num={userFollowers} num__label={"FOLLOWERS"} />
+          <StatsItem num={userFollowing} num__label={"FOLLOWING"} />
         </div>
       </div>
       <div className="chartSection">
