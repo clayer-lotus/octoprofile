@@ -19,11 +19,20 @@ const UserPage = () => {
   const [userImage, setuserImage] = useState("");
   const [loading, setLoading] = useState("");
   const [error, setError] = useState("");
-  const [data, setData] = useState("");
+  const [profileLink, setProfileLink] = useState("");
+  // const [state, setstate] = useState(initialState)
+  // const [state, setstate] = useState(initialState)
+  // const [state, setstate] = useState(initialState)
+  // const [state, setstate] = useState(initialState)
+  // const [state, setstate] = useState(initialState)
+
   useEffect(() => {
     axios("https://api.github.com/users/" + searchName)
       .then((response) => {
-        setData(response.data);
+        setuserName(response.data.name);
+        setuserImage(response.data.avatar_url);
+        setgithubName(response.data.login);
+        setProfileLink(response.data.html_url);
       })
       .catch((error) => {
         console.error("Error in Fetching Data ", error);
@@ -39,16 +48,14 @@ const UserPage = () => {
   return (
     <div className="userContainer">
       <div className="upIntroSection">
-        <img
-          src="https://avatars.githubusercontent.com/u/61588021?v=4"
-          alt=""
-          className="github__image"
-        />
-        <h1>Lotus Biswas</h1>
+        <a href={profileLink} target="blank">
+          <img src={userImage} className="github__image" />
+        </a>
+        <h1>{userName}</h1>
         <h3 className="github__name">
-          <a href="https://github.com/dev-lotus/" target="blank">
+          <a href={profileLink} target="blank">
             {" "}
-            @dev-lotus
+            @{githubName}
           </a>
         </h3>
         <ul>
