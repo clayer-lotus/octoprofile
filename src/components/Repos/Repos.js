@@ -2,6 +2,7 @@ import React from "react";
 import "./Repos.css";
 import { Button, Badge, Row, Col, Card, Container } from "react-bootstrap";
 import "../../bootstrap.min.css";
+import LanguageColor from "../../components/LanguageColor/LanguageColor";
 const Repos = () => {
   return (
     <Col className="mt-3">
@@ -31,7 +32,7 @@ const Repos = () => {
                 <i
                   class="fas fa-circle"
                   aria-hidden="true"
-                  style={{ color: "green" }}
+                  style={{ color: LanguageColor["Kotlin"] }}
                 ></i>{" "}
                 React JS
               </span>
