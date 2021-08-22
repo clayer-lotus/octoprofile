@@ -1,5 +1,5 @@
 import React from "react";
-import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 const MostStarred = (props) => {
   const state = {
     labels: ["January", "February", "March", "April", "May"],
