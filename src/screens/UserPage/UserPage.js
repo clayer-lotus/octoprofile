@@ -26,6 +26,27 @@ const UserPage = () => {
   const [userFollowing, setUserFollowing] = useState("");
   const [topLanguage, setTopLanguage] = useState("");
 
+  var topLanguageName = [];
+  var topLanguageSameCount = [];
+
+  function count_duplicate(a) {
+    let counts = {};
+
+    for (let i = 0; i < a.length; i++) {
+      if (counts[a[i]]) {
+        counts[a[i]] += 1;
+      } else {
+        counts[a[i]] = 1;
+      }
+    }
+    for (let prop in counts) {
+      if (counts[prop]) {
+        topLanguageName.push(prop);
+        topLanguageSameCount.push(counts[prop]);
+      }
+    }
+  }
+
   const fetchData = () => {
     const githubProfileData = axios.get(
       "https://api.github.com/users/" + searchName
@@ -33,27 +54,6 @@ const UserPage = () => {
     const githubRepos = axios.get(
       "https://api.github.com/users/" + searchName + "/repos"
     );
-
-    var topLanguageName = [];
-    var topLanguageSameCount = [];
-
-    function count_duplicate(a) {
-      let counts = {};
-
-      for (let i = 0; i < a.length; i++) {
-        if (counts[a[i]]) {
-          counts[a[i]] += 1;
-        } else {
-          counts[a[i]] = 1;
-        }
-      }
-      for (let prop in counts) {
-        if (counts[prop]) {
-          topLanguageName.push(prop);
-          topLanguageSameCount.push(counts[prop]);
-        }
-      }
-    }
 
     axios.all([githubProfileData, githubRepos]).then(
       axios.spread((...allData) => {
@@ -141,7 +141,11 @@ const UserPage = () => {
       <div className="chartSection">
         <Container>
           <Row xs={1} md={3} className="g-4 ">
-            <TopLanguage title={"Top Languages"} />
+            <TopLanguage
+              title={"Top Languages"}
+              languageLabel={topLanguageName}
+              languageCount={topLanguageSameCount}
+            />
             <MostStarred title={"Most Starred"} />
             <StarsPerLanguage title={"Stars Per Language"} />
           </Row>
