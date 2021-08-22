@@ -1,5 +1,5 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, PolarArea } from "react-chartjs-2";
 import { Col, Card } from "react-bootstrap";
 import "../ChartCardStyle.css";
 
@@ -36,7 +36,7 @@ const MostStarred = (props) => {
             <h3>{props.title}</h3>
           </Card.Title>
           <Card.Text>
-            <Bar
+            <PolarArea
               data={state}
               options={{
                 title: {

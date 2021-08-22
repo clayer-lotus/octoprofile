@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import "./UserPage.css";
 import StatsItem from "../../components/StatsItem/StatsItem";
@@ -8,11 +8,34 @@ import "../../bootstrap.min.css";
 import StarsPerLanguage from "../../components/StarsPerLanguage/StarsPerLanguage";
 import MostStarred from "../../components/MostStarred/MostStarred";
 import TopLanguage from "../../components/TopLanguage/TopLanguage";
+import axios from "axios";
 
 const UserPage = () => {
-  //   const search = useLocation().search;
-  //   const name = new URLSearchParams(search).get("id");
-  //   return <h3>{name}</h3>;
+  const search = useLocation().search;
+  const searchName = new URLSearchParams(search).get("id");
+
+  const [userName, setuserName] = useState("");
+  const [githubName, setgithubName] = useState("");
+  const [userImage, setuserImage] = useState("");
+  const [loading, setLoading] = useState("");
+  const [error, setError] = useState("");
+  const [data, setData] = useState("");
+  useEffect(() => {
+    axios("https://api.github.com/users/" + searchName)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error in Fetching Data ", error);
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+  if (loading) return "Loading ...";
+  if (error) return "Error ...";
+
   return (
     <div className="userContainer">
       <div className="upIntroSection">
