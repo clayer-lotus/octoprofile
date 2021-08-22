@@ -51,9 +51,9 @@ const UserPage = () => {
       <div className="chartSection">
         <Container>
           <Row xs={1} md={3} className="g-4 ">
-            <ChartsCard title={"Top Languages"} />
-            <ChartsCard title={"Most Starred"} />
-            <ChartsCard title={"Stars Per Language"} />
+            <ChartsCard title={"Top Languages"} type={"Pie"} />
+            <ChartsCard title={"Most Starred"} type={"Bar"} />
+            <ChartsCard title={"Stars Per Language"} type={"Doughnut"} />
           </Row>
         </Container>
       </div>
