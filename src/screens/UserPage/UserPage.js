@@ -9,6 +9,7 @@ import StarsPerLanguage from "../../components/StarsPerLanguage/StarsPerLanguage
 import MostStarred from "../../components/MostStarred/MostStarred";
 import TopLanguage from "../../components/TopLanguage/TopLanguage";
 import axios from "axios";
+import LanguageColor from "../../components/LanguageColor/LanguageColor";
 
 const UserPage = () => {
   const search = useLocation().search;
@@ -24,10 +25,14 @@ const UserPage = () => {
   const [userPublicRepos, setUserPublicRepos] = useState("");
   const [userFollowers, setUserFollowers] = useState("");
   const [userFollowing, setUserFollowing] = useState("");
-  const [topLanguage, setTopLanguage] = useState("");
+  const [topLanguageName, setTopLanguageName] = useState("");
+  const [topLanguageSameCount, setTopLanguageSameCount] = useState("");
+  const [getLanguageColor, setgetLanguageColor] = useState("");
 
-  var topLanguageName = [];
-  var topLanguageSameCount = [];
+  var pushtopLanguageName = [];
+  var pushtopLanguageSameCount = [];
+  var listofTopLanguage = [];
+  var languageColorArr = [];
 
   function count_duplicate(a) {
     let counts = {};
@@ -41,17 +46,22 @@ const UserPage = () => {
     }
     for (let prop in counts) {
       if (counts[prop]) {
-        topLanguageName.push(prop);
-        topLanguageSameCount.push(counts[prop]);
+        pushtopLanguageName.push(prop);
+        languageColorArr.push(LanguageColor[prop]);
+
+        pushtopLanguageSameCount.push(counts[prop]);
       }
     }
+    setTopLanguageName(pushtopLanguageName);
+    setgetLanguageColor(languageColorArr);
+    setTopLanguageSameCount(pushtopLanguageSameCount);
   }
 
-  const fetchData = () => {
-    const githubProfileData = axios.get(
+  const fetchData = async () => {
+    const githubProfileData = await axios.get(
       "https://api.github.com/users/" + searchName
     );
-    const githubRepos = axios.get(
+    const githubRepos = await axios.get(
       "https://api.github.com/users/" + searchName + "/repos"
     );
 
@@ -69,9 +79,8 @@ const UserPage = () => {
         setUserFollowers(allgithubProfileData.followers);
         setUserFollowing(allgithubProfileData.following);
 
-        var listofTopLanguage = [];
         for (var i = 0; i < allgithubRepos.length; i++) {
-          if (allgithubRepos[i].fork == false) {
+          if (allgithubRepos[i].fork === false) {
             if (allgithubRepos[i].language == null) {
               listofTopLanguage.push("Others");
             } else {
@@ -81,13 +90,8 @@ const UserPage = () => {
         }
 
         count_duplicate(listofTopLanguage);
+        console.log(getLanguageColor);
 
-        console.log(listofTopLanguage);
-
-        console.log(topLanguageName);
-        console.log(topLanguageSameCount);
-
-        // console.log(topLanguage);
         console.log(allgithubProfileData);
         console.log(allgithubRepos);
       })
@@ -95,15 +99,6 @@ const UserPage = () => {
   };
 
   useEffect(() => {
-    //     // setTopLanguage(response.data.map(d=>d.))
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error in Fetching Data ", error);
-    //     setError(error);
-    //   })
-    //   .finally(() => {
-    //     setLoading(false);
-    //   });
     fetchData();
   }, []);
   // if (loading) return "Loading ...";
@@ -124,11 +119,11 @@ const UserPage = () => {
         </h3>
         <ul>
           <li>
-            <i class="fa fa-map-marker"></i>
+            <i className="fa fa-map-marker"></i>
             {userLocation}
           </li>
           <li>
-            <i class="fa fa-calendar"></i>Joined February 28, 2020
+            <i className="fa fa-calendar"></i>Joined February 28, 2020
           </li>
         </ul>
         {/* STATS SECTION */}
@@ -145,6 +140,7 @@ const UserPage = () => {
               title={"Top Languages"}
               languageLabel={topLanguageName}
               languageCount={topLanguageSameCount}
+              languageColorprop={getLanguageColor}
             />
             <MostStarred title={"Most Starred"} />
             <StarsPerLanguage title={"Stars Per Language"} />

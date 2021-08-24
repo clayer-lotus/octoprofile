@@ -10,7 +10,7 @@ const Repos = () => {
         <Card.Body>
           <Card.Title className="repo">
             <span>
-              <i class="fas fa-book"></i>{" "}
+              <i className="fas fa-book"></i>{" "}
               <span className="repo__name">dev-lotus</span>
             </span>
           </Card.Title>
@@ -30,7 +30,7 @@ const Repos = () => {
                 }}
               >
                 <i
-                  class="fas fa-circle"
+                  className="fas fa-circle"
                   aria-hidden="true"
                   style={{ color: LanguageColor["Kotlin"] }}
                 ></i>{" "}
@@ -38,7 +38,7 @@ const Repos = () => {
               </span>
               <span>
                 <i
-                  class="fas fa-star"
+                  className="fas fa-star"
                   aria-hidden="true"
                   style={{ color: "gold" }}
                 ></i>{" "}
@@ -46,7 +46,7 @@ const Repos = () => {
               </span>
               <span>
                 <i
-                  class="fas fa-code-fork"
+                  className="fas fa-code-fork"
                   aria-hidden="true"
                   style={{ color: "blue" }}
                 ></i>{" "}
@@ -58,8 +58,8 @@ const Repos = () => {
             </div>
           </Card.Text>
         </Card.Body>
-        <div class="go-corner" href="#">
-          <div class="go-arrow">→</div>
+        <div className="go-corner" href="#">
+          <div className="go-arrow">→</div>
         </div>
       </Card>
     </Col>

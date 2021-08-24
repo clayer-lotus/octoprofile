@@ -1,5 +1,5 @@
 const LanguageColor = {
-  Others: "	#D0D0D0",
+  Others: "#D0D0D0",
   Mercury: "#ff2b2b",
   TypeScript: "#2b7489",
   PureBasic: "#5a6986",
@@ -194,7 +194,7 @@ const LanguageColor = {
   NCL: "#28431f",
   Io: "#a9188d",
   Rouge: "#cc0088",
-  cpp: "#f34b7d",
+  "C++": "#f34b7d",
   "AGS Script": "#B9D9FF",
   Dogescript: "#cca760",
   nesC: "#94B0C7",
